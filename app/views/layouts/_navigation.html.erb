@@ -1,21 +1,23 @@
-<%= link_to "Wiki2", root_path, :class => 'brand' %>
-<ul class="nav">
+<div id="nav"><ul class="nav">
+   <!--div><li>
+    <%= link_to "Wiki2", root_path, :class => 'brand' %>
+  </li></div-->
   <% if user_signed_in? %>
-    <li>
+    <div><li>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
-    </li>
+    </li></div>
   <% else %>
-    <li>
+    <div><li>
     <%= link_to 'Login', new_user_session_path %>  
-    </li>
+    </li></div>
   <% end %>
   <% if user_signed_in? %>
-    <li>
+    <div><li>
     <%= link_to 'Edit account', edit_user_registration_path %>
-    </li>
+    </li></div>
   <% else %>
-    <li>
+    <div><li>
     <%= link_to 'Sign up', new_user_registration_path %>
-    </li>
+    </li></div>
   <% end %>
-</ul>
+</ul></div>
