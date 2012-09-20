@@ -26,3 +26,4 @@ gem "rails-backbone"
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'capistrano_rsync_with_remote_cache'
+gem 'rvm-capistrano'
