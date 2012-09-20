@@ -10,7 +10,7 @@ class ImplementationPage
   end  
 
   def content
-    wiki = ....
-    wiki.getContent(@query)
+    #wiki = ....
+    #wiki.getContent(@query)
   end 
 end   
