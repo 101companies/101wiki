@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Wiki2::Application.load_tasks
+Wiki::Application.load_tasks
