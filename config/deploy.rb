@@ -2,7 +2,6 @@ require "rvm/capistrano"
 require 'bundler/capistrano'
 
 set :application, "101wiki"
-set :repository,  "set your repository location here"
 
 set :scm, :git
 set :scm_command, "/usr/local/bin/git"
@@ -17,7 +16,7 @@ default_run_options[:pty] = true  # Must be set for the password prompt
                                   # from git to work
 set :repository, "git://github.com/101companies/101wiki.git"  # Your clone URL
 set :branch, "master"
-#set :use_sudo, true
+set :use_sudo, true
 set :user, "wiki101"
 
 set :deploy_to, "/Users/wiki101/Sites/101wiki"
@@ -25,8 +24,8 @@ set :deploy_via, :remote_cache
 ssh_options[:forward_agent] = true
 ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")] 
 
-set :rvm_ruby_string, '1.9.3@101wiki'
-set :rvm_type, :user
+#set :rvm_ruby_string, '1.9.3@101wiki'
+#set :rvm_type, :user
 
 #set :user, "deployer"  # The server's user for deploys
 #set :scm_passphrase, "p@ssw0rd"  # The deploy user's password
