@@ -22,7 +22,6 @@ gem "devise", ">= 2.1.2"
 gem 'omniauth'
 gem 'omniauth-github'
 gem "rails-backbone"
-gem "requirejs-rails"
 
 # Deploy with Capistrano
 gem 'capistrano'
