@@ -16,7 +16,7 @@ default_run_options[:pty] = true  # Must be set for the password prompt
                                   # from git to work
 set :repository, "git://github.com/101companies/101wiki.git"  # Your clone URL
 set :branch, "master"
-set :use_sudo, true
+#set :use_sudo, true
 set :user, "wiki101"
 
 set :deploy_to, "/Users/wiki101/Sites/101wiki"
@@ -32,8 +32,8 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
-before "deploy:update_code", "deploy:compress_assets"
-after "deploy:symlink", "deploy:upload_assets"
+#before "deploy:update_code", "deploy:compress_assets"
+#after "deploy:symlink", "deploy:upload_assets"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
@@ -43,19 +43,6 @@ after "deploy:symlink", "deploy:upload_assets"
 
 # If you are using Passenger mod_rails uncomment this:
  namespace :deploy do
-  desc "Compress assets in a local file"
-  task :compress_assets do
-    run_locally("rm -rf public/assets/*")
-    run_locally("bundle exec rake assets:precompile")
-    run_locally("touch assets.tgz && rm assets.tgz")
-    run_locally("tar zcvf assets.tgz public/assets/")
-    run_locally("mv assets.tgz public/assets/")
-  end
-  desc "Upload assets"
-  task :upload_assets do
-    upload("public/assets/assets.tgz", release_path + '/assets.tgz')
-    run "cd #{release_path}; tar zxvf assets.tgz; rm assets.tgz"
-  end
   task :start do ; end
   task :stop do ; end
   task :restart, :roles => :app, :except => { :no_release => true } do
