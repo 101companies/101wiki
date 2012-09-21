@@ -6,7 +6,7 @@ class Wiki.Models.Implementation extends Backbone.Model
 		content: null
 
 	url : () -> 
-		"http://localhost:3000/api/101implementation:" + @get('title')
+		"/api/101implementation:" + @get('title')
 
 	class Wiki.Collections.ImplementationsCollection extends Backbone.Collection
 		model: Wiki.Models.Implementation
