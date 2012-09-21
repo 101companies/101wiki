@@ -1,9 +1,10 @@
 require 'spec_helper'
 
-describe ImplementationPage do
+describe Page do
   it "should return a content for the implementation page" do
-    @page = ImplementationPage.new("hadoop")
-    content = @page.content()
+    @page = Page.new("101implementation:hadoop")
+    @content = @page.content()
+    puts @content
   end
 end  
 

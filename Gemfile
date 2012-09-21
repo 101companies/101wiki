@@ -23,6 +23,8 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem "rails-backbone"
 
+gem 'httparty'
+
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'capistrano_rsync_with_remote_cache'
