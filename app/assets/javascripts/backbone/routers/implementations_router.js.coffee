@@ -1,32 +1,21 @@
 class Wiki.Routers.ImplementationsRouter extends Backbone.Router
-  initialize: (options) ->
-    @implementations = new Wiki.Collections.ImplementationsCollection()
-    @implementations.reset options.implementations
 
-  routes:
-    "/new"      : "newImplementation"
-    "/index"    : "index"
-    "/:id/edit" : "edit"
-    "/:id"      : "show"
-    ".*"        : "index"
+	routes:
+		"/edit": "edit"
+		".*"   : "show"
 
-  newImplementation: ->
-    @view = new Wiki.Views.Implementations.NewView(collection: @implementations)
-    alert("")
-    $("#main").html(@view.render().el)
+	# show an implementation
+	show: () ->
+		console.log("Showing 101implementation '" + Wiki.page + "'")
+		@implementation = new Wiki.Models.Implementation({title: Wiki.page});
+		@implementation.fetch({
+			success: (res,data) -> 
+					@view = new Wiki.Views.Implementations.ShowView({model: data})
+					@view.render()
+			})  
 
-  index: ->
-    @view = new Wiki.Views.Implementations.IndexView(implementations: @implementations)
-    $("#main").html(@view.render().el)
-
-  show: (id) ->
-    implementation = @implementations.get(id)
-    console.log(id)
-    @view = new Wiki.Views.Implementations.ShowView(model: implementation)
-    $("#main").html(@view.render().el)
-
-  edit: (id) ->
-    implementation = @implementations.get(id)
-
-    @view = new Wiki.Views.Implementations.EditView(model: implementation)
-    $("#main").html(@view.render().el)
+	# edit an implementation
+	edit: () ->
+		#implementation = @implementations.get(id)
+		#@view = new Wiki.Views.Implementations.EditView(model: implementation)
+		#$("#main").html(@view.render().el)
