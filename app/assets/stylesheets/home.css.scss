@@ -3,21 +3,51 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 html {
-	background-color: rgb(240,240,230);
+	background-color: rgb(240,240,245);
 	padding-top: 0px;
 }
 
 body {
-	background-color: rgb(240,240,230);
-	margin: -10px 35px 0px 35px;
+	background-color: rgb(240,240,245);
+	margin: -10px 10% 0px 10%;
 	
+}
+
+
+a{
+  color: #043048;
+  &:visited {
+    color: #043048;
+  }
+  &:hover {
+    color: #043048;
+  }
+}
+
+
+h1, h2, h3 {
+	color: #233051;
+}
+
+#container1 {
+  background-color: rgb(240,240,245);
+}
+
+.tablecontainer {
+	width: 40%;
+	padding: 10px;
 }
 
 #main {
   border-radius: 4px;
-  box-shadow: inset 0 0 7px 3px #777 ,inset 0 0 10px 3px #397AA1;
-  background-color: rgb(230,230,220);
-  padding: 15px 25px 15px 25px;
+  box-shadow: 0 0 2px 1px #777 ,0 0 4px 1px #397AA1;
+  background-color: rgb(220,220,225);
+  padding: 15px 25px 5px 25px;
+  height: 100%;
+}
+
+header {
+	background-color: rgb(240,240,240);
 }
 
 #nav {
@@ -31,8 +61,8 @@ body {
 	float: right;
 	margin: 0px 10px 0px 0px;
 	padding: 2px 15px 2px 15px;
-	box-shadow: 0 0 5px 1px #888,0 0 3px 1px #FD794F;
-	bbackground-color: rgb(230,230,220);
+	box-shadow: 0 0 2px 1px #888,0 0 3px 1px #397AA1;
+	background-color: rgb(220,220,220);
 
     -webkit-transition: background 50ms ease-in 00ms; /* property duration timing-function delay */
     -moz-transition: background 150ms ease-in 00ms;
@@ -46,15 +76,44 @@ body {
 
 }
 #nav a {
-	color: #BE745C;
+	color: #233051;
 }
 
 footer {
+	text-align: center;
+	margin-top: 10px;
 	padding: 10px 0px 0px 5px;
+	background-color: rgb(240,240,245);
 }
 
 .item {
 	padding: 1px 0px 1px 3px;
+}
+
+.indexaction, .newaction {
+	font-weight:bold;
+	font-size: 11px;
+	padding: 6px 12px 6px 12px;
+	box-shadow: 0 0 1px 1px #888;
+	border-radius: 1px;
+    background: -webkit-linear-gradient(#eeedfa,#bfbfc9);
+    background: -moz-linear-gradient(#eeedfa,#bfbfc9);
+    background: -o-linear-gradient(#eeedfa,#bfbfc9);
+    background: -ie-linear-gradient(#eeedfa,#bfbfc9);
+    
+    -webkit-transition: background 200ms ease-out;
+    -moz-transition: background 200ms ease-out;
+    -o-transition: background 200ms ease-out;
+    -ie-transition: background 200ms ease-out;
+    
+    background-size:1px 50px;
+}
+.indexaction:hover {
+	   background-position:25px;
+}
+
+a.newaction {
+	margin-bottom: 10px;
 }
 
 

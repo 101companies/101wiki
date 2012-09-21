@@ -1,4 +1,7 @@
 Wiki::Application.routes.draw do
+  resources :implementations
+
+
   authenticated :user do
     root :to => 'home#index'
   end
