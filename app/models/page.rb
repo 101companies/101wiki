@@ -23,7 +23,8 @@ class Page
       user      = rev['revisions'][0]['user']
       timestamp = rev['revisions'][0]['timestamp']  
       markup    = rev['revisions'][0]['*']
-      return markup
+      data = {"title" => title, "content" => markup}
+      return data
     end 
   end  
 end	
