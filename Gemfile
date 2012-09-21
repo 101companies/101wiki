@@ -20,10 +20,10 @@ gem "factory_girl_rails", ">= 4.0.0", :group => [:development, :test]
 gem "devise", ">= 2.1.2"
 
 # Authentication
-gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+gem 'omniauth'#, :git => 'git://github.com/intridea/omniauth.git'
 gem 'json_pure' 
 gem 'json'
-gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem 'omniauth-github'#, :git => 'git://github.com/intridea/omniauth-github.git'
 gem "cancan"
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem "omniauth-identity"
