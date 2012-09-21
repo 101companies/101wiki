@@ -9,5 +9,5 @@ Wiki::Application.routes.draw do
 
   scope 'api', :format => :json do
     match "101implementation:page" => "pages#show"
-	end
+  end
 end
