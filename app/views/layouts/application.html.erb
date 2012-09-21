@@ -10,11 +10,17 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container1" class="container1">
+    <div class="header">
       <header>
-        <%= render 'layouts/navigation' %>
-        <%= render 'layouts/messages' %>
+          <div id="logo">
+            <img src="http://101companies.org/TechnologiesAnywhere.png"/>
+          </div>
+          <div id="pagename">101companies.org</div>
+          <%= render 'layouts/navigation' %>
+          <%= render 'layouts/messages' %>
       </header>
+    </div>
+    <div id="container1" class="container1">
       <div id="main" role="main">
         <%= yield %>
       </div>
