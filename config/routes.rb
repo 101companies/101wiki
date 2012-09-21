@@ -1,5 +1,5 @@
 Wiki::Application.routes.draw do
-  match "101implementation:page" => "implementations#show"
+  match "101implementation:title" => "implementations#show"
 
   authenticated :user do
     root :to => 'home#index'
