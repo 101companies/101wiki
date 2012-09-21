@@ -6,12 +6,11 @@
 class Authentication
   include Mongoid::Document
   include Mongoid::Timestamps
-  cache
 
   field :provider
   field :uid
 
-  referenced_in :user
+  belongs_to :user
 
   # Some providers can not be displayed as a humanized version of their
   # symbol. provide_name will do the translation.

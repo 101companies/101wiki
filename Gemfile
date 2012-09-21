@@ -19,11 +19,20 @@ gem "launchy", ">= 2.1.2", :group => :test
 gem "factory_girl_rails", ">= 4.0.0", :group => [:development, :test]
 gem "devise", ">= 2.1.2"
 
-gem 'omniauth'
-gem 'omniauth-github'
+# Authentication
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+gem 'json_pure' 
+gem 'json'
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
+gem "cancan"
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem "omniauth-identity"
+
 gem "rails-backbone"
 
 gem 'httparty'
+gem "haml-rails"
+
 
 # Deploy with Capistrano
 gem 'capistrano'

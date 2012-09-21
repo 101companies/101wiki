@@ -12,4 +12,15 @@ Wiki::Application.routes.draw do
   scope 'api', :format => :json do
     match "101implementation:page" => "pages#show"
   end
+
+  #users
+  match 'registrations' => 'users#index', :as => 'registrations'
+
+  devise_for :users, :controllers => { :registrations => 'registrations' }
+  resources :users, :only => [:show,:destroy]
+
+  # AUTHENTICATIONS
+  match '/auth/:provider/callback' => 'authentications#create'
+  resources :authentications, :only => [:index,:create,:destroy]
+  match '/auth/failure' => 'authentications#auth_failure'
 end

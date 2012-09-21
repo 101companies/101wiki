@@ -1,3 +1,12 @@
 Wiki::Application.config.middleware.use OmniAuth::Builder do
-  provider :github, 'ac4daa281db9085c8996', '4603b46da61284be66743083dc7c0ce1c4168081'
+  # OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+  configure do |config|
+    config.path_prefix = '/auth' if Rails.env == 'production'
+  end
+
+
+  Secrets::secret['omniauth'].each do |service, definition|
+    provider service.to_sym, definition['key'], definition['secret']
+  end
 end

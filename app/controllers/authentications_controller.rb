@@ -15,6 +15,7 @@ class AuthenticationsController < ApplicationController
   # the authentication provider callback.
   def create
     omniauth = request.env["omniauth.auth"]
+    logger.info omniauth.inspect
     authentication = Authentication.where(:provider => omniauth['provider'], :uid => omniauth['uid']).first
     if authentication
       # Just sign in an existing user with omniauth
