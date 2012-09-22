@@ -33,6 +33,8 @@ gem "rails-backbone"
 gem 'httparty'
 gem "haml-rails"
 
+gem 'wikicloth'
+
 
 # Deploy with Capistrano
 gem 'capistrano'

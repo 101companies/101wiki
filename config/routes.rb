@@ -1,5 +1,5 @@
 Wiki::Application.routes.draw do
-  match "101implementation:title" => "implementations#show"
+  match "101implementation:title" => "pages#show"
 
   authenticated :user do
     root :to => 'home#index'
@@ -10,7 +10,7 @@ Wiki::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   scope 'api', :format => :json do
-    match "101implementation:page" => "pages#show"
+    match "101implementation:title" => "pages#show"
   end
 
   #users

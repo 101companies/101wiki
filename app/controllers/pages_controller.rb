@@ -1,16 +1,10 @@
 class PagesController < ApplicationController
-  respond_to :json
-  before_filter :default_format_json
-
-  def default_format_json
-    request.format = "json" unless params[:format]
-  end
+  respond_to :json, :html
  
   def show
-  	@name = params[:page]
-  	puts @name
-    @page = Page.new("101implementation#{@name}")
-    @content = @page.content()
-    respond_with @content.to_json   
+  	@title = params[:title]
+    @p = Page.new("101implementation#{@title}")
+    @page = @p.data()
+    respond_with @page 
   end	
 end	

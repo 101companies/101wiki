@@ -13,7 +13,7 @@ class Page
      "action=query&prop=revisions&titles=?&rvprop=timestamp%7Cuser%7Ccomment%7Ccontent&format=json"
   end  
 
-  def content
+  def data
     resp = self.class.get("/api.php?action=query&prop=revisions&titles=#{@title}&rvprop=timestamp%7Cuser%7Ccomment%7Ccontent&format=json").parsed_response
     resp["query"]["pages"].each_key do |revision|
       rev       = resp["query"]["pages"][revision]
