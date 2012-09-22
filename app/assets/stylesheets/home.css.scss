@@ -23,8 +23,8 @@ a{
 }
 
 
-h1, h2, h3, h4{
-	color: #060224;
+h1, h2, h3, h4, h5, h6, h7{
+	color: rgb(20,20,40);
 }
 
 h2 {
@@ -41,7 +41,7 @@ h2 {
   background-color: rgb(250,250,250);
   border-radius: 4px;
   box-shadow: 0 0 2px 1px #777 ,0 0 4px 1px #397AA1;
-  background-color: rgb(240,240,245);
+  background-color: rgb(240,240,240);
   padding: 15px 25px 5px 25px;
   height: 100%;
   margin-top: 30px;
@@ -60,19 +60,24 @@ h2 {
 }
 
 header {
-	height: 86px;	
+	height: 57.3px;	
 }
 
 #logo {
+	height: 57.3px;
+	width: 90px;
+	background-size: 100%;		
 	float: left;
+	background-image: url('http://101companies.org/TechnologiesAnywhere.png')
 }
+
 
 #pagename {
 	float: left;
-	font-size: 20px;
-	color: #060224;
+	font-size: 16px;
+	color: rgb(20,20,40);
 	font-family: sketchRockwell;
-	padding: 35px 0px 0px 20px;
+	padding: 20px 0px 0px 20px;
 	text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -1px;
 }
 
