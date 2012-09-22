@@ -4,11 +4,11 @@
   </li></div-->
   <% if user_signed_in? %>
     <div><li>
-    <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
+    </i><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>        
     </li></div>
   <% else %>
     <div><li>
-    <%= link_to 'Login', new_user_session_path %>  
+    <i class="icon-circle-arrow-right"> </i> <%= link_to 'Login', new_user_session_path %>  
     </li></div>
   <% end %>
   <% if user_signed_in? %>
@@ -17,7 +17,7 @@
     </li></div>
   <% else %>
     <div><li>
-    <%= link_to 'Sign up', new_user_registration_path %>
+    <i class="icon-check"> </i> <%= link_to 'Sign up', new_user_registration_path %>
     </li></div>
   <% end %>
 </ul></div>

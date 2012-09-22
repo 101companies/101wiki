@@ -10,17 +10,17 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div id="container1" class="container1">
+    <div class="header">
       <header>
-        <%= render 'layouts/navigation' %>
-        <%= render 'layouts/messages' %>
+          <div id="logo"></div>
+          <div id="pagename">101companies.org</div>
+          <%= render 'layouts/navigation' %>
+          <%= render 'layouts/messages' %>
       </header>
-      <div id="main" role="main">
+    </div>
+    <div id="main" role="main">
         <%= yield %>
-      </div>
-      <footer>
-      Here | Goes | Some | Footer text
-      </footer>
-    </div> <!--! end of #container -->
+    </div>
+    <footer>Here | Goes | Some | Footer text</footer>
   </body>
 </html>

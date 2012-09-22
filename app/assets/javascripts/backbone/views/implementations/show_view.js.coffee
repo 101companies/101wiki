@@ -6,4 +6,4 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 	el: "#main"
 
 	render: ->
-		$(@el).html(@template(@model))
+		$(@el).html(@template({title: @model.title, content: wiki2html(@model.content)}))
