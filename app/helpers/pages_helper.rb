@@ -9,6 +9,9 @@ module PagesHelper
     html = wiki.to_html
     html.gsub!('!START!', '<pre>')
     html.gsub!('!END!','</pre>')
+    wiki.internal_links.each do |link|
+      html.gsub!("<a href=\"#{link}\"", "<a href=\"/#{link}\"")
+    end  
     return html.html_safe
   end 
 

@@ -23,7 +23,7 @@ describe Page do
     wiki.to_html
 
     puts "Sections: #{wiki.sections}" 
-    puts "Internal Links: #{wiki.internal_links.size}"
+    puts "Internal Links: #{wiki.internal_links.size} [#{wiki.internal_links.join(",")}]"
     puts "External Links: #{wiki.external_links.size}"
     puts "References:     #{wiki.references.size}"
     puts "Categories:     #{wiki.categories.size} [#{wiki.categories.join(",")}]"
