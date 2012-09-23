@@ -1,3 +1,7 @@
 <div>
 <%= parse(@page) -%>
 </div>
+
+<script type="text/javascript">
+	Wiki.context = <%= j @context.to_json.html_safe-%>
+</script>
