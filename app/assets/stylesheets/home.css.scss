@@ -12,7 +12,7 @@ body {
 }
 
 
-container a{
+.container a{
   color: #043048;
   &:visited {
     color: #043048;
@@ -31,7 +31,7 @@ h2 {
 	font-size: 28px;
 }
 
-h2 a {
+.container h2 a {
 	color: #333;
 }
 
@@ -221,7 +221,7 @@ p {
   margin-left: 20px;
   text-shadow: 0 1px 0 #ffffff;
   font-family: sketchRockwell;
-  color: #333;
+  color: #B62424;
   font-size: 15px;
 }
 
