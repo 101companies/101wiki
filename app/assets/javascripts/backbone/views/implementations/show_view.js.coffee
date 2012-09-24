@@ -6,4 +6,11 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 	el: "#main"
 
 	render: ->
-		$(@el).html(@template({title: @model.title, content: wiki2html(@model.content)}))
+		$.each(@model.get('categories'), (i,catname) -> 
+			$('#infofooter').prepend(
+				$('<a>').attr('href', '#').html(
+					$('<span>').addClass('label label-info').text(catname)
+				).append(' ')
+			)
+		)
+		#$(@el).html(@template({title: @model.title, content: wiki2html(@model.content)}))
