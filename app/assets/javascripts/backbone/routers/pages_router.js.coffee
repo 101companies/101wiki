@@ -1,17 +1,23 @@
 class Wiki.Routers.PagesRouter extends Backbone.Router
 
 	routes:
-		"/edit": "edit"
+		"edit/:sectionname": "editSection",
+		"edit": "edit",
 		".*"   : "show"
 
-	# show an implementation
+	# show page
 	show: () ->
 		@implementation = new Wiki.Models.Implementation(Wiki.context);
+		@implementation.set('headlines', $('.mw-headline').map(() -> @id).get())
 		@view = new Wiki.Views.Implementations.ShowView({model: @implementation})
 		@view.render() 
 
-	# edit an implementation
+
+	# edit page
 	edit: () ->
-		#implementation = @implementations.get(id)
-		#@view = new Wiki.Views.Implementations.EditView(model: implementation)
-		#$("#main").html(@view.render().el)
+		console.log("Editing")
+
+
+	# edit a section
+	editSection: (sectionname) ->
+		console.log("Editing '" + sectionname + "'")

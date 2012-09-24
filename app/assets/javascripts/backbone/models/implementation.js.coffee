@@ -3,8 +3,8 @@ class Wiki.Models.Implementation extends Backbone.Model
 
 	defaults:
 		title: null
-		content: null
-		context: []
+		categories: []
+		headlines: []
 
 	url : () -> 
 		"/api/101implementation:" + @get('title')
