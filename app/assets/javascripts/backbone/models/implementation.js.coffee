@@ -8,7 +8,3 @@ class Wiki.Models.Implementation extends Backbone.Model
 
 	url : () -> 
 		"/api/101implementation:" + @get('title')
-
-	class Wiki.Collections.ImplementationsCollection extends Backbone.Collection
-		model: Wiki.Models.Implementation
-		url: '/implementations'

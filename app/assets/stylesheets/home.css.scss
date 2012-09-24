@@ -180,3 +180,11 @@ p {
 	font-family: sketchRockwell;
 	src: url('/assets/Strato-linked.ttf');
 }
+
+.container {
+	background-color: #FFFFFF;
+	-webkit-border-radius: 2px;
+      -moz-border-radius: 2px;
+        border-radius: 2px;
+	padding: 10px 20px 10px;
+}
