@@ -11,6 +11,7 @@ Wiki::Application.routes.draw do
 
   scope 'api', :format => :json do
     match "101implementation:title" => "pages#show"
+    post "classify" => "classification#classify"
   end
 
   #users

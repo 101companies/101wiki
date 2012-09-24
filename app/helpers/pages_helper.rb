@@ -3,6 +3,7 @@
 module PagesHelper
   require 'wikicloth'
   require 'pygments.rb'
+  
 	def parse(page)
     content = highlight(page['content'])
     wiki = WikiCloth::Parser.new(:data => content, :noedit => true) 
