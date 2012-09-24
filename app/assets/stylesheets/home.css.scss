@@ -12,7 +12,7 @@ body {
 }
 
 
-a{
+container a{
   color: #043048;
   &:visited {
     color: #043048;
@@ -185,13 +185,13 @@ p {
 	font-family: sketchRockwell;
 	src: url('/assets/Strato-linked.ttf');
 }
-
 .container {
 	background-color: #FFFFFF;
 	-webkit-border-radius: 2px;
       -moz-border-radius: 2px;
         border-radius: 2px;
 	padding: 10px 20px 10px;
+	margin-top: 60px;
 }
 
 .headlinecontainer {
@@ -214,10 +214,26 @@ p {
 	
 }
 
-.brand!important{
-	color: brown;
+.brandname {
+  display: block;
+  float: left;
+  padding: 12px 20px 10px;
+  margin-left: 20px;
+  text-shadow: 0 1px 0 #ffffff;
+  font-family: sketchRockwell;
+  color: #333;
+  font-size: 15px;
 }
 
-.navbar-inner {
+.brandname a {
+  color: brown;
+}
+
+.brandname a:visted {
+  color: brown;
+}
+
+
+.navbar-fixed-top {
 	box-shadow:0 0 10px 1px #333;
 }
