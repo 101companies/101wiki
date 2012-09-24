@@ -24,12 +24,17 @@ a{
 
 
 h1, h2, h3, h4, h5, h6, h7{
-	color: rgb(20,20,40);
+	color: #333;
 }
 
 h2 {
-	font-size: 32px;
+	font-size: 28px;
 }
+
+h2 a {
+	color: #333;
+}
+
 
 .tablecontainer {
 	width: 40%;
@@ -187,4 +192,32 @@ p {
       -moz-border-radius: 2px;
         border-radius: 2px;
 	padding: 10px 20px 10px;
+}
+
+.headlinecontainer {
+	width: 100%;
+	height: 50px;
+}
+
+.editbutton {
+	float: right;
+}
+
+.editbutton a:visted{
+	float: right;
+}
+
+
+.mw-headline {
+	float: left;
+	width: 50%;
+	
+}
+
+.brand!important{
+	color: brown;
+}
+
+.navbar-inner {
+	box-shadow:0 0 10px 1px #333;
 }

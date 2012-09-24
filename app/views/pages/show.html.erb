@@ -3,8 +3,9 @@
 </div>
 
 <script type="text/javascript">
-	Wiki.context = <%= j @context.to_json.html_safe -%>
 
+	Wiki.page = new Wiki.Models.Implementation(<%= j @context.to_json.html_safe -%>);
+	
 	jQuery(document).ready(function ($){
 		window.router = new Wiki.Routers.PagesRouter();
 		Backbone.history.start();	
