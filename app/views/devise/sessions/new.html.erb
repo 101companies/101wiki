@@ -14,11 +14,11 @@
 
   <div class='field'>
     <%= f.label :sign_in %>
-    <%= f.submit t(:sign_in), :class => "button save" %>
+    <%= f.submit "Sign in", :class => "button save" %>
   </div>
 <% end %>
 
-<h2><%= t(:or_user_omni_auth) -%></h2>
+<h2><%= "Or use your GitHub account" -%></h2>
 
 <%= render '/authentications/authentications' %>
 
