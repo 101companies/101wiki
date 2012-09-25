@@ -19,10 +19,19 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 				).append(' ')
 			)
 		)
+
 		self = @
 		# edit sections buttons
 		$.each(Wiki.page.get('headlines'), (i, headline) -> 
 			$('#' + headline).parent().wrap("<div></div>").parent().addClass('headlinecontainer').append(
 					self.ebTemplate({headline : headline})
 			)
+		)
+
+		# remove TOC
+		$('#toc').remove()
+
+		# wrap contents of sections
+		$('.container .headlinecontainer').each(() -> 
+			$(@).nextUntil('.headlinecontainer').wrapAll('<div class="section-content"/>')
 		)
