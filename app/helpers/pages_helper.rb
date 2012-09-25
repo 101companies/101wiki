@@ -21,6 +21,12 @@ module PagesHelper
     wiki.to_html
     wiki.categories
   end  
+  
+  def get_sections(page)
+    wiki = WikiCloth::Parser.new(:data => page['content'], :noedit => true)
+    wiki.to_html
+    wiki.sections.first.children
+  end
 
   def get_section(page, section)
     wiki = WikiCloth::Parser.new(:data => page['content'], :noedit => true) 
