@@ -7,7 +7,10 @@ class Wiki.Routers.PagesRouter extends Backbone.Router
 
 	# show page
 	show: ->
-		Wiki.page.set "headlines", $(".mw-headline").map(-> @id).get()
+		Wiki.page.set 'sections', new Wiki.Models.Sections()
+		$.each $(".mw-headline"), ->
+			section = new Wiki.Models.Section({pagetitle: Wiki.page.get('title'), title: @id})
+			Wiki.page.get('sections').add(section) 
 		@view = new Wiki.Views.Implementations.ShowView()
 		@view.render() 
 		Wiki.mainDrawn = true
@@ -23,3 +26,5 @@ class Wiki.Routers.PagesRouter extends Backbone.Router
 	editSection: (sectionname) ->
 		@show() unless Wiki.mainDrawn
 		console.log "Editing '" + sectionname + "'"
+		@view = new Wiki.Views.Sections.EditView(model: sectionname)
+		@view.render()

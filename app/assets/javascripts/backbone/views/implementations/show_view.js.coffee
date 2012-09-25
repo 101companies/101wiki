@@ -21,9 +21,10 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 
 		self = @
 		# edit sections buttons
-		$.each Wiki.page.get("headlines"), (i, headline) ->
+		$.each Wiki.page.get('sections').models, (i, section) ->
+			headline = section.get('title')
 			$("#" + headline).parent().wrap("<div></div>").parent().addClass("headlinecontainer").
-				append self.ebTemplate(headline: headline)
+				append(self.ebTemplate(headline: headline))
 
 
 
