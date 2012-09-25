@@ -22,6 +22,13 @@ module PagesHelper
     wiki.categories
   end  
 
+  def get_section(page, section)
+    wiki = WikiCloth::Parser.new(:data => page['content'], :noedit => true) 
+    wiki.to_html
+    logger.info "Number of top-level sections #{wiki.sections.first.children.length}" 
+    wiki.sections.first.children.find { |s| s.title.downcase == section.downcase } 
+  end  
+
 
   def highlight(input)
     puts substring_positions('<syntaxhighlight', input)

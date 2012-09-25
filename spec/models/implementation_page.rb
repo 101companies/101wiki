@@ -60,7 +60,8 @@ bar"
     wiki = WikiCloth::Parser.new(:data => data, :noedit => true) 
     wiki.to_html
     puts "Data: #{data}"
-    puts "Sections: #{wiki.sections()}" 
+    puts "Sections:"
+    wiki.sections.first.children.each { |child| puts child.title } 
   end  
 end 
   

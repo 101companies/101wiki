@@ -10,8 +10,9 @@ Wiki::Application.routes.draw do
   resources :users, :only => [:show, :index]
 
   scope 'api', :format => :json do
-    match "101implementation:title" => "pages#show"
-    post "classify" => "classification#classify"
+    match '101implementation:title' => 'pages#show'
+    post 'classify' => 'classification#classify'
+    get 'sections/:title' => 'pages#section'
   end
 
   #users
