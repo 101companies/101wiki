@@ -219,18 +219,20 @@ p {
   float: left;
   padding: 13px 20px 10px;
   margin-left: 20px;
-  text-shadow: 0 1px 0 #ffffff;
+  text-shadow: 0 4px 0 #ffffff;
   font-family: sketchRockwell;
+  color: #333;
   color: #B62424;
   font-size: 15px;
 }
 
-.brandname a {
-  color: brown;
+.brandname:hover {
+  color: #333;
+  text-decoration: none;
 }
 
-.brandname a:visted {
-  color: brown;
+.brandname:visted {
+  color: #B62424;
 }
 
 
