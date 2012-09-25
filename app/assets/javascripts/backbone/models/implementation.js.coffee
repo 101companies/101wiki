@@ -1,5 +1,4 @@
 class Wiki.Models.Implementation extends Backbone.Model
-	paramRoot: 'implementation'
 
 	defaults:
 		title: null

@@ -1,5 +1,4 @@
 class Wiki.Models.Section extends Backbone.Model
-	paramRoot: 'implementation'
 
 	defaults:
 		title: null
@@ -11,4 +10,4 @@ class Wiki.Models.Section extends Backbone.Model
 
 
 class Wiki.Models.Sections extends Backbone.Collection
-    model: Wiki.Models.Section
+		model: Wiki.Models.Section
