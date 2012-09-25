@@ -1,18 +1,24 @@
 Wiki::Application.routes.draw do
-  match "101implementation:title" => "pages#show"
+  #match "101implementation:title" => "pages#show"
 
   authenticated :user do
     root :to => 'home#index'
   end
+
   root :to => "home#index"
+  match '/:title' => 'pages#show'
  
   devise_for :users
   resources :users, :only => [:show, :index]
 
   scope 'api', :format => :json do
-    match '101implementation:title' => 'pages#show'
     post 'classify' => 'classification#classify'
-    get 'sections/:title' => 'pages#section'
+    resources :pages, :only => [:section,:show] do
+      member do
+        get 'sections/:title' => 'pages#section'
+      end  
+    end  
+
   end
 
   #users
