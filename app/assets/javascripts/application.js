@@ -18,5 +18,4 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/wiki
-//= require wiki2html.js
 //= require_tree .

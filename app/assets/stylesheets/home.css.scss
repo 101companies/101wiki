@@ -192,6 +192,7 @@ p {
         border-radius: 2px;
 	padding: 10px 20px 10px;
 	margin-top: 60px;
+	overflow: hidden;
 }
 
 .headlinecontainer {
@@ -237,5 +238,29 @@ p {
 
 
 .navbar-fixed-top {
+	border-radius: 10px;
 	box-shadow:0 0 10px 1px #333;
+}
+
+.section-content-container {
+	overflow: hidden;
+	width: 100%;
+}
+
+.section-content {
+	width: 200%;
+}
+
+.section-content-source {
+	float: left;
+	width: 50%;
+}
+
+.section-content-source textarea {
+	width: 80%;
+}
+
+.section-content-parsed {
+	float: left;
+	width: 50%;
 }

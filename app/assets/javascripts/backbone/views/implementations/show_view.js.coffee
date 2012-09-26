@@ -8,21 +8,42 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 	el: "#main"
 
 	render: ->
-		console.log('Rendering...')
+		console.log 'Rendering...'
 		$('.container').prepend('<hr>').prepend($('<h1>').text(Wiki.page.get('title')))
 
 		# add category links
-		$.each(Wiki.page.get('categories'), (i,catname) -> 
+		$.each Wiki.page.get('categories'), (i,catname) -> 
 			$('#infofooter').prepend(
 				$('<a>').attr('href', 'Category:' + catname.replace(' ', '_')).html(
 					$('<span>').addClass('label label-info').text(catname)
 				).append(' ')
 			)
-		)
+
 		self = @
+
 		# edit sections buttons
-		$.each(Wiki.page.get('headlines'), (i, headline) -> 
-			$('#' + headline).parent().wrap("<div></div>").parent().addClass('headlinecontainer').append(
-					self.ebTemplate({headline : headline})
-			)
-		)
+		$.each Wiki.page.get('sections').models, (i, section) ->
+			headline = section.get('title')
+			$("#" + headline).parent().wrap("<div></div>").parent().addClass("headlinecontainer").
+				append(self.ebTemplate(headline: headline))
+
+
+		# remove TOC
+		$('#toc').remove()
+
+		# wrap contents of sections
+		$('.container .headlinecontainer').each ->
+			$set = $()
+			nxt = @nextSibling
+			while nxt
+				unless $(nxt).is('.container .headlinecontainer')
+					$set.push nxt
+					nxt = nxt.nextSibling
+				else
+					break
+			$set.wrapAll('<div class="section-content-parsed"/>').
+				parent().wrap('<div class="section-content"/>')
+		
+		$('.section-content').wrap('<div class="section-content-container"/>')
+
+
