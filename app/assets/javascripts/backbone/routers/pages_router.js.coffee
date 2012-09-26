@@ -26,5 +26,8 @@ class Wiki.Routers.PagesRouter extends Backbone.Router
 	editSection: (sectionname) ->
 		@show() unless Wiki.mainDrawn
 		console.log "Editing '" + sectionname + "'"
-		@view = new Wiki.Views.Sections.EditView(model: sectionname)
-		@view.render()
+		$.each Wiki.page.get('sections').models, (i, section) -> 
+			if (section.get('title') == sectionname)
+				@view = new Wiki.Views.Sections.EditView(model: section)
+				@view.render()
+				false

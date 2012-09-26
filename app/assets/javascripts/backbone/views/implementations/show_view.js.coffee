@@ -20,12 +20,12 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 			)
 
 		self = @
+
 		# edit sections buttons
 		$.each Wiki.page.get('sections').models, (i, section) ->
 			headline = section.get('title')
 			$("#" + headline).parent().wrap("<div></div>").parent().addClass("headlinecontainer").
 				append(self.ebTemplate(headline: headline))
-
 
 
 		# remove TOC
@@ -41,5 +41,9 @@ class Wiki.Views.Implementations.ShowView extends Backbone.View
 					nxt = nxt.nextSibling
 				else
 					break
-			$set.wrapAll('<div class="section-content-source"/>').parent().wrap('<div class="section-content"/>')
+			$set.wrapAll('<div class="section-content-parsed"/>').
+				parent().wrap('<div class="section-content"/>')
+		
+		$('.section-content').wrap('<div class="section-content-container"/>')
+
 

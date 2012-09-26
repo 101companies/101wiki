@@ -3,10 +3,10 @@ class Wiki.Models.Section extends Backbone.Model
 	defaults:
 		title: null
 		pagetitle: null
-		content: []
+		content: null
 
 	url : () -> 
-		"/api/pages/" + @get('title') + "/sections/" + @get('headlinetitle')
+		'/api/sections/' + @get('title') # actual call to be supported: "/api/pages/" + @get('title') + "/sections/" + @get('headlinetitle')
 
 
 class Wiki.Models.Sections extends Backbone.Collection
