@@ -1,7 +1,10 @@
 require "rvm/capistrano"  
 require 'bundler/capistrano'
 
+logger.level = Logger::DEBUG
+
 set :application, "101wiki"
+set :rake, "#{rake} --trace"
 
 set :scm, :git
 set :scm_command, "/usr/local/bin/git"
@@ -16,7 +19,7 @@ default_run_options[:pty] = true  # Must be set for the password prompt
                                   # from git to work
 set :repository, "git://github.com/101companies/101wiki.git"  # Your clone URL
 set :branch, "master"
-#set :use_sudo, true
+set :use_sudo, true
 set :user, "wiki101"
 
 set :deploy_to, "/Users/wiki101/Sites/101wiki"
@@ -33,7 +36,6 @@ ssh_options[:keys] = [File.join(ENV["HOME"], ".ssh", "id_rsa")]
 # if you want to clean up old releases on each deploy uncomment this:
 after "deploy:restart", "deploy:cleanup"
 #before "deploy:update_code", "deploy:compress_assets"
-#after "deploy:symlink", "deploy:upload_assets"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
