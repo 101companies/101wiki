@@ -14,6 +14,7 @@ class PagesController < ApplicationController
   def section
     title = params[:title]
     p = Page.new("101implementation:hadoop").data
-    respond_with get_section(p, title).to_json
+    section = {'section' => title, 'content' => get_section(p, title)}
+    respond_with section.to_json
   end	
 end	
