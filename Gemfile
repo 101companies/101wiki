@@ -35,7 +35,7 @@ gem "haml-rails"
 
 gem 'wikicloth'
 gem "pygments.rb", "~> 0.2.13"
-
+gem 'closure-compiler'
 
 # Deploy with Capistrano
 gem 'capistrano'
