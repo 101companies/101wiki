@@ -9,7 +9,7 @@ class Wiki.Views.Sections.EditView extends Backbone.View
     ))
     self = @
     @model.fetch(success: (model, res) ->
-    	$('#' + self.model.get('title') + 'form').text(res)
+        $('#' + self.model.get('title') + 'form').text(self.model.get('content'))
     )
     $('#' + @model.get('title')).closest('.headlinecontainer').next().children(0).animate({marginLeft: '-100%'}, 400)
 
