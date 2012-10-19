@@ -5,8 +5,8 @@ class PagesController < ApplicationController
   def show
     @title = params[:title]
     @page = Page.new(@title)
-    context = {'title' => @page.title, 'categories' => @page.categories}
-    respond_with context
+    @context = {'title' => @page.title, 'categories' => @page.categories}
+    respond_with @context
   end	
 
   # get all sections for a page
