@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def show
     @title = params[:title]
-    @page = Page.new(title)
+    @page = Page.new(@title)
     context = {'title' => @page.title, 'categories' => @page.categories}
     respond_with context
   end	
