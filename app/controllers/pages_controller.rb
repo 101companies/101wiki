@@ -3,7 +3,7 @@ class PagesController < ApplicationController
   respond_to :json, :html
 
   def show
-    title = params[:title]
+    @title = params[:title]
     logger.info title
     @page = Page.new(title)
     context = {'title' => @page.title, 'categories' => @page.categories}
