@@ -8,21 +8,20 @@ Wiki::Application.routes.draw do
   root :to => "home#index"
   match '/:title' => 'pages#show'
  
-  devise_for :users
+  #users
+  match 'registrations' => 'users#index', :as => 'registrations'
+  devise_for :users, :controllers => { :registrations => 'registrations' }
   resources :users, :only => [:show, :index]
 
   scope 'api', :format => :json do
     post 'classify' => 'classification#classify'
     resources :pages, :only => [:section,:show] do
       member do
+        get 'sections' => 'pages#sections'
         get 'sections/:title' => 'pages#section'
       end  
     end  
-
   end
-
-  #users
-  match 'registrations' => 'users#index', :as => 'registrations'
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
   resources :users, :only => [:show,:destroy]

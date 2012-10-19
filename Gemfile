@@ -33,7 +33,7 @@ gem "rails-backbone"
 gem 'httparty'
 gem "haml-rails"
 
-gem 'wikicloth'
+gem 'wikicloth', :git => 'git://github.com/avaranovich/wikicloth.git'
 gem "pygments.rb", "~> 0.2.13"
 gem 'closure-compiler'
 
@@ -41,3 +41,5 @@ gem 'closure-compiler'
 gem 'capistrano'
 gem 'capistrano_rsync_with_remote_cache'
 gem 'rvm-capistrano'
+
+gem 'mediawiki-gateway', :git => 'git://github.com/kubicek/mediawiki-gateway.git'

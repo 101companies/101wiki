@@ -5,16 +5,22 @@ class PagesController < ApplicationController
   def show
     title = params[:title]
     logger.info title
-    @p = Page.new(title)
-    @page = @p.data
-    @context = {'title' => @page['title'], 'categories' => get_categories(@page)}
-    respond_with @page 
+    @page = Page.new(title)
+    context = {'title' => @page.title, 'categories' => @page.categories}
+    respond_with context
   end	
 
+  # get all sections for a page
+  def sections
+    title = params[:id]
+    page = Page.new(title)
+    respond_with page.sections
+  end
+
   def section
-    title = params[:title]
-    p = Page.new("101implementation:hadoop").data
-    section = {'section' => title, 'content' => get_section(p, title)}
+    title = params[:id]
+    p = Page.new(title)
+    section = {'content' => p.section(params[:title])}
     respond_with section.to_json
   end	
 end	
