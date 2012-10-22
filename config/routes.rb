@@ -6,6 +6,7 @@ Wiki::Application.routes.draw do
   end
 
   root :to => "home#index"
+  get '/data' => 'home#data'
   match '/:title' => 'pages#show'
  
   #users

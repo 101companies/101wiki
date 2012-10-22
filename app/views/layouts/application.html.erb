@@ -19,17 +19,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brandname" href="#" name="top"><!--img src="assets/logo.jpg"/-->101companies</a>
+        <a class="brandname" href="/" name="top"><!--img src="assets/logo.jpg"/-->101companies</a>
         <div class="nav-collapse collapse">
           <ul class="nav">
             <li class="divider-vertical"></li>
-            <li class="active"><a href="#"><i class="icon-file"></i>Wiki</a></li>
+            <li class="active"><a href="/wiki"><i class="icon-file"></i>Wiki</a></li>
             <li class="divider-vertical"></li>
-            <li><a href="#"><i class="icon-envelope"></i>Data</a></li>
-            <li class="divider-vertical"></li>
-            <li><a href="#"><i class="icon-signal"></i>Foo</a></li>
-            <li class="divider-vertical"></li>
-            <li><a href="#"><i class="icon-lock"></i>Bar</a></li>
+            <li><a href="/data"><i class="icon-envelope"></i>Data</a></li>
             <li class="divider-vertical"></li>
           </ul>
 
@@ -77,19 +73,8 @@
   </div>
   <!--/.navbar -->
   <%= render 'layouts/messages' %>
-
-
-  <div class="container">
-    <div class="row">
-  <div class="span12">
-         <ul class="breadcrumb">
-          <li><a href="#">Home</a> <span class="divider">/</span></li>
-          <li><a href="#">Library</a> <span class="divider">/</span></li>
-          <li class="active">Data</li>
-        </ul> 
-      </div> 
-    </div>  
-    <div class="row"> 
+  <div class="container-fluid">
+    <div class="row-fluid"> 
       <div class="span12">
         <%= yield %>
       </div>  
