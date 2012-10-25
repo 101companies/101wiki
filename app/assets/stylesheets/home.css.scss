@@ -247,20 +247,25 @@ p {
 	width: 100%;
 }
 
-.section-content {
+.section-content, .section-content ul, .section-content p {
 	width: 200%;
+	font-size: 14px;
+	padding-left: 3px;
+}
+
+.section-content-parsed,.section-content-source {
+
+	float: left;
+	width: 50%;
 }
 
 .section-content-source {
-	float: left;
-	width: 50%;
+	height: 200px;
 }
 
-.section-content-source textarea {
-	width: 80%;
-}
 
-.section-content-parsed {
+.editor {
 	float: left;
 	width: 50%;
+	height: 30%;
 }

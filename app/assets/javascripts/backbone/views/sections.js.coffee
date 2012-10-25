@@ -12,7 +12,7 @@ class Wiki.Views.Sections extends Backbone.View
 
   render: ->
     # wrap el in containers for easy access
-    @e = $(@el).parent().wrap('<div></div>').parent().addClass('headlinecontainer').
+    @e = $('#' + @model.get('title')).removeAttr("id").parent().wrap('<div></div>').parent().addClass('headlinecontainer').
       append(@ebTemplate(headline:  @model.get('title')))[0]
     $set = $()
     nxt = @e.nextSibling
@@ -25,7 +25,7 @@ class Wiki.Views.Sections extends Backbone.View
     $set.wrapAll('<div class="section-content-parsed"/>').
       parent().wrap('<div class="section-content"/>')
 
-    $(@e).next().wrap('<div class="section-content-container"/>')
+    $(@e).next().wrap('<div class="section-content-container"/>').parent().attr("id", @model.get('title'))
     # set el to section wrapping container
     @setElement($(@e).next().andSelf().wrapAll('<div class="section"/>').parent())
 
@@ -33,10 +33,16 @@ class Wiki.Views.Sections extends Backbone.View
   edit: ->
     unless $(@el).find('.section-content-source').length
       $(@el).find('.section-content').append($('<div>').addClass('section-content-source').append(
-        $('<textarea>').attr('id', @model.get('title') + 'form').text('Loading...')
+        $('<div>').attr('id', @model.get('title') + 'editor').addClass('editor')
       ))
+    console.log('#' + @model.get('title') + 'form')
     self = @
     @model.fetch(success: (model, res) ->
-        $('#' + self.model.get('title') + 'form').text(self.model.get('content'))
+      console.log(self.model.get('content'))
+      #$('#' + self.model.get('title') + 'editor').text(self.model.get('content'))
+      editor = ace.edit(self.model.get('title') + 'editor');
+      editor.setTheme("ace/theme/chrome");
+      editor.getSession().setMode("ace/mode/text");
+      editor.insert(self.model.get('content'))
     )
     $(@el).find('.section-content').animate({marginLeft: '-100%'}, 400)

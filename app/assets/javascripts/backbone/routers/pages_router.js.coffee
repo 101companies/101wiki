@@ -6,11 +6,8 @@ class Wiki.Routers.PagesRouter extends Backbone.Router
 	# show page
 	show: ->
 		Wiki.page.set 'sections', new Wiki.Models.Sections()
-		$.each $(".mw-headline"), ->
-			section = new Wiki.Models.Section({title: @id})
-			Wiki.page.get('sections').add(section)
-			sectionview = new Wiki.Views.Sections(model: section, el: @)
-			sectionview.render()
-		appview = new Wiki.Views.Pages()
+		appview = new Wiki.Views.Pages(model: Wiki.page)
 		appview.render() 
-		Wiki.mainDrawn = true
+		$.each $(".mw-headline"), ->
+			section = new Wiki.Models.Section({title: @id, page: Wiki.page})
+			Wiki.page.get('sections').add(section)
