@@ -5,5 +5,5 @@ class Wiki.Models.Implementation extends Backbone.Model
     categories: []
     sections: null
                       
-  url : () -> 
+  url : -> 
     "/api/101implementation:" + @get('title')
