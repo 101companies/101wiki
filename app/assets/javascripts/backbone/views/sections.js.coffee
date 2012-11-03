@@ -4,13 +4,8 @@ class Wiki.Views.Sections extends Backbone.View
   template : JST['backbone/templates/sections/edit']
   ebTemplate: JST['backbone/templates/editbutton'] 
 
-  events: {
-    'click .editbutton' : 'edit'
-  }
-
-  inEdit: false
-
   render: ->
+    self = @
     # wrap el in containers for easy access
     @e = $('#' + @model.get('title')).removeAttr("id").parent().wrap('<div></div>').parent().addClass('headlinecontainer').
       append(@ebTemplate(headline:  @model.get('title')))[0]
@@ -29,20 +24,33 @@ class Wiki.Views.Sections extends Backbone.View
     # set el to section wrapping container
     @setElement($(@e).next().andSelf().wrapAll('<div class="section"/>').parent())
 
+    $(@el).find('.editbutton').toggle(
+      -> 
+        $(@).find('strong').text("Save")
+        self.edit()
+      ,
+      -> 
+        $(@).find('strong').text("Edit")
+        self.save()
+    )
 
   edit: ->
+    self = @
     unless $(@el).find('.section-content-source').length
       $(@el).find('.section-content').append($('<div>').addClass('section-content-source').append(
         $('<div>').attr('id', @model.get('title') + 'editor').addClass('editor')
-      ))
-    console.log('#' + @model.get('title') + 'form')
-    self = @
+      ))    
     @model.fetch(success: (model, res) ->
-      console.log(self.model.get('content'))
-      #$('#' + self.model.get('title') + 'editor').text(self.model.get('content'))
-      editor = ace.edit(self.model.get('title') + 'editor');
-      editor.setTheme("ace/theme/chrome");
-      editor.getSession().setMode("ace/mode/text");
-      editor.insert(self.model.get('content'))
+      self.editor = ace.edit(self.model.get('title') + 'editor');
+      self.editor.setTheme("ace/theme/chrome");
+      self.editor.getSession().setMode("ace/mode/text");
+      self.editor.insert(self.model.get('content'))
     )
     $(@el).find('.section-content').animate({marginLeft: '-100%'}, 400)
+
+
+  save: ->
+    @model.save(content: @editor.getValue(), 
+      success: -> console.log("Worked"), 
+      error: -> console.log("Error")
+    )
