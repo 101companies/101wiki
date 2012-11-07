@@ -37,7 +37,6 @@ class Page
   end
 
   def sections
-    puts "sections:"
     sec = []
     @wiki.sections.first.children.each { |s| sec.push({'title' => s.title, 'content' => s.wikitext})  }
     return sec

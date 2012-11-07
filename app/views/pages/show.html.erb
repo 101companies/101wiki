@@ -22,6 +22,7 @@
 
 Wiki.page = new Wiki.Models.Implementation(<%= j @context['title'].to_json.html_safe -%>);
 Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
+console.log(Wiki.page.get('sections').toJSON());
 jQuery(document).ready(function ($){
   window.router = new Wiki.Routers.PagesRouter();
   Backbone.history.start();	
