@@ -17,7 +17,7 @@ class Wiki.Views.Pages extends Backbone.View
       )
 
     # remove TOC
-    $('#toc').remove()
+    $('#toc').remove()  
 
   addOne: (section) ->
       sectionview = new Wiki.Views.Sections(model: section, el: @)
