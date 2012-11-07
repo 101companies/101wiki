@@ -41,9 +41,6 @@ class Page
     sec = []
     @wiki.sections.first.children.each { |s| sec.push({'title' => s.title, 'wikitext' => s.wikitext})  }
     return sec
-
-    #res = @wiki.sections.first.children.to_a.map{|s| return {title=> s.title, content => s.wikitext}}
-    #return res
   end
 
   def categories

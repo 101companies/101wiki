@@ -20,8 +20,8 @@
 
 <script type="text/javascript">
 
-Wiki.page = new Wiki.Models.Implementation(<%= j @context.to_json.html_safe -%>);
-
+Wiki.page = new Wiki.Models.Implementation(<%= j @context['title'].to_json.html_safe -%>);
+Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
 jQuery(document).ready(function ($){
   window.router = new Wiki.Routers.PagesRouter();
   Backbone.history.start();	
