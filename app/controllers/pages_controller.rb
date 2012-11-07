@@ -13,7 +13,8 @@ class PagesController < ApplicationController
   def sections
     title = params[:id]
     page = Page.new(title)
-    respond_with page.sections
+    sections = page.sections
+    respond_with sections
   end
 
   def section
