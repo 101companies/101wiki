@@ -39,10 +39,10 @@ class Wiki.Views.Sections extends Backbone.View
     $(button).unbind('click').bind('click', -> self.save(button))
     
   save: (button) ->
-    @model.save(content: @editor.getValue(), 
+    Wiki.page.save(content: @editor.getValue(), 
       success: -> 
         console.log("Success")
-      , 
+    , 
       error: (a,b) -> 
         console.log("Error " + b.status)
     )
