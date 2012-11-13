@@ -1,56 +1,56 @@
 Wiki.Views.Sections ||= {}
 
 class Wiki.Views.Sections extends Backbone.View
-  template : JST['backbone/templates/sections/edit']
+  template : JST['backbone/templates/section']
   ebTemplate: JST['backbone/templates/editbutton'] 
 
   render: ->
     self = @
-    # wrap el in containers for easy access
-    @e = $('#' + @model.get('title')).removeAttr("id").parent().wrap('<div></div>').parent().addClass('headlinecontainer').
-      append(@ebTemplate(headline:  @model.get('title')))[0]
+    # get prerendered headline node
+    preRendered = $('#' + @model.get('title')).parent()
+
+    # collect prerendered content nodes
     $set = $()
-    nxt = @e.nextSibling
+    nxt = preRendered[0].nextSibling
     while nxt
         unless $(nxt).is('h2')
           $set.push nxt
           nxt = nxt.nextSibling
         else
           break
-    $set.wrapAll('<div class="section-content-parsed"/>').
-      parent().wrap('<div class="section-content"/>')
 
-    $(@e).next().wrap('<div class="section-content-container"/>').parent().attr("id", @model.get('title'))
-    # set el to section wrapping container
-    @setElement($(@e).next().andSelf().wrapAll('<div class="section"/>').parent())
+    # replace prerendered section by template      
+    $section = $(@template(title: @model.get('title')))
+    $section.find('.section-content-parsed').append($set)
+    preRendered.after($section).remove()
+    @setElement($section)
 
-    $(@el).find('.editbutton').toggle(
-      -> 
-        $(@).find('strong').text("Save")
-        self.edit()
-      ,
-      -> 
-        $(@).find('strong').text("Edit")
-        self.save()
-    )
+    # set handler
+    $(@el).find('.editbutton').click( -> self.edit(@))
 
-  edit: ->
+  edit: (button) ->
     self = @
-    unless $(@el).find('.section-content-source').length
-      $(@el).find('.section-content').append($('<div>').addClass('section-content-source').append(
-        $('<div>').attr('id', @model.get('title') + 'editor').addClass('editor')
-      ))    
-    @model.fetch(success: (model, res) ->
-      self.editor = ace.edit(self.model.get('title') + 'editor');
-      self.editor.setTheme("ace/theme/chrome");
-      self.editor.getSession().setMode("ace/mode/text");
-      self.editor.insert(self.model.get('content'))
-    )
-    $(@el).find('.section-content').animate({marginLeft: '-100%'}, 400)
-
-
-  save: ->
+    @toggleEdit(true)
+    self.editor = ace.edit($(self.el).find('.editor')[0]);
+    self.editor.setTheme("ace/theme/chrome");
+    self.editor.getSession().setMode("ace/mode/text");
+    self.editor.insert(self.model.get('content'))
+    $(button).find('strong').text("Save")
+    $(button).unbind('click').bind('click', -> self.save(button))
+    
+  save: (button) ->
     @model.save(content: @editor.getValue(), 
-      success: -> console.log("Worked"), 
-      error: -> console.log("Error")
+      success: -> 
+        console.log("Success")
+      , 
+      error: (a,b) -> 
+        console.log("Error " + b.status)
     )
+
+  toggleEdit: (open) ->
+    if open
+      $(@el).find('.section-content').animate({marginLeft: '-100%'}, 400)
+      $(@el).find('.section-content-source').css(height: '400px')
+      $(@el).find('.editor').css(height: '400px')
+    else
+      console.log("foo")
