@@ -17,6 +17,10 @@ class PagesController < ApplicationController
     respond_with sections
   end
 
+  def update
+    content = params[:content]
+  end
+
   def section
     title = params[:id]
     p = Page.new(title)
