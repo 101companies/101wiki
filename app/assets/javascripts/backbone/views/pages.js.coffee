@@ -3,6 +3,7 @@ class Wiki.Views.Pages extends Backbone.View
   initialize: ->
     @model.get('sections').bind('add', @addSection, @)
     @model.bind('change', @render, @)
+    @model.get('sections').bind('change', @editSaved, @)
     @render()
     @addAllSections()
 
@@ -25,10 +26,20 @@ class Wiki.Views.Pages extends Backbone.View
 
 
   addSection: (section) ->
-      sectionview = new Wiki.Views.Sections(model: section)
-      sectionview.render()
+    sectionview = new Wiki.Views.Sections(model: section)
+    sectionview.render()
 
   addAllSections: ->
     self = @
     $.each @model.get('sections').models , (i, section) -> self.addSection(section)
+
+
+  editSaved: -> 
+    @model.save( 
+      success: -> 
+        console.log("Success")
+    , 
+      error: (a,b) -> 
+        console.log("Error " + b.status)
+    )
 

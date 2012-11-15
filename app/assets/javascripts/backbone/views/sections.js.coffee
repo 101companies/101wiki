@@ -39,13 +39,8 @@ class Wiki.Views.Sections extends Backbone.View
     $(button).unbind('click').bind('click', -> self.save(button))
     
   save: (button) ->
-    Wiki.page.save(content: @editor.getValue(), 
-      success: -> 
-        console.log("Success")
-    , 
-      error: (a,b) -> 
-        console.log("Error " + b.status)
-    )
+    @model.set('content', @editor.getValue())
+    
 
   toggleEdit: (open) ->
     if open
