@@ -34,7 +34,7 @@ class Page
   def update(content)
     @content = content
     gw = MediaWiki::Gateway.new(@base_uri)
-    gw.login('wiki101', 'wiki4259')
+    gw.login(ENV['WIKIUSER'], ENV['WIKIPASSWORD'])
     gw.edit(@title, content)
   end
 
