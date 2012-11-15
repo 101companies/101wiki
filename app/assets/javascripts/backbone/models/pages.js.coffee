@@ -8,4 +8,4 @@ class Wiki.Models.Implementation extends Backbone.Model
     sections: null
                       
   urlRoot : -> 
-    "/api/"
+    "/api/pages"

@@ -33,7 +33,9 @@ class Page
 
   def update(content)
     @content = content
-    gateway.edit(@title, content)
+    gw = MediaWiki::Gateway.new(@base_uri)
+    gw.login('wiki101', 'wiki4259')
+    gw.edit(@title, content)
   end
 
   def sections

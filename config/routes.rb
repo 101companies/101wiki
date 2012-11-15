@@ -18,7 +18,7 @@ Wiki::Application.routes.draw do
     post 'classify' => 'classification#classify'
     resources :pages, :only => [:section,:show] do
       member do
-        put ":id" => "pages#update"
+        put "/" => "pages#update"
         get 'sections' => 'pages#sections'
         get 'sections/:title' => 'pages#section'
       end  

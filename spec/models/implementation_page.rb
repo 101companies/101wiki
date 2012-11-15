@@ -25,16 +25,9 @@ class WikiParser < WikiCloth::Parser
 end
 
 describe Page do
-  it "should return a content for the implementation page" do
-    page = Page.new("101implementation:hadoop")
-    puts page
+  it "should support update" do
+    page = Page.new("Technology:Ruby_on_Rails")
+    page.update("foo bar")
   end
-
-  it "shoud have sections" do
-    page = Page.new("101implementation:hadoop")
-    page.sections.each do |s| 
-      puts "#{s.id}"
-    end  
-  end  
 end 
   
