@@ -20,14 +20,11 @@ class PagesController < ApplicationController
   def update
     title = params[:title]
     sections = params[:sections]
-    #content = ""
-    #sections.each { |s| content += s['content'] }
-    content = params[:content]
+    content = ""
+    sections.each { |s| content += s['content'] }
     page = Page.new(title)
     page.update(content)
-    context = {'title' => page.title}
-    #respond_with content.to_json
-    respond_with page
+    render :json => {:success => true}
   end
 
   def section
