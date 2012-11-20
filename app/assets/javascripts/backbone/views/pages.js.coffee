@@ -12,12 +12,13 @@ class Wiki.Views.Pages extends Backbone.View
 
   render: ->
     # add page title
-    #
+    $("#title h1").text(@model.get('title'))
 
     # modal
     $(document).ajaxComplete((event, res, settings) -> 
+
       unless res.status == 200
-        $('#modal_content').css('color', 'red').text("Something went wrong :-(" + res.responseText)
+        $('#modal_content').css('color', 'red').text("Something went wrong: " + res.statusText)
       else
         $('#modal_content').css('color', 'green').text("Done!")
         setTimeout(
