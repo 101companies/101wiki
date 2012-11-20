@@ -40,7 +40,6 @@ class Wiki.Views.Sections extends Backbone.View
     
   save: (button) ->
     @model.set('content', @editor.getValue())
-    
 
   toggleEdit: (open) ->
     if open

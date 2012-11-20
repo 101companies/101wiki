@@ -4,6 +4,7 @@ class Wiki.Views.Pages extends Backbone.View
     @model.get('sections').bind('add', @addSection, @)
     @model.bind('change', @render, @)
     @model.get('sections').bind('change', @editSaved, @)
+
     @render()
     @addAllSections()
 
@@ -12,6 +13,18 @@ class Wiki.Views.Pages extends Backbone.View
   render: ->
     # add page title
     #
+
+    # modal
+    $(document).ajaxComplete((event, res, settings) -> 
+      unless res.status == 200
+        $('#modal_content').css('color', 'red').text("Something went wrong :-(" + res.responseText)
+      else
+        $('#modal_content').css('color', 'green').text("Done!")
+        setTimeout(
+          -> $('#modal').modal('hide'),
+          250
+        )
+    )
 
     # add category links
     $.each @model.get('categories'), (i,catname) -> 
@@ -35,11 +48,7 @@ class Wiki.Views.Pages extends Backbone.View
 
 
   editSaved: -> 
-    @model.save( 
-      success: -> 
-        console.log("Success")
-    , 
-      error: (a,b) -> 
-        console.log("Error " + b.status)
-    )
+    $('#modal_content').css('color', 'black').text("Saving page...")
+    $('#modal').modal()
+    @model.save()
 
