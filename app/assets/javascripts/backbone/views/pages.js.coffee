@@ -3,7 +3,7 @@ class Wiki.Views.Pages extends Backbone.View
   initialize: ->
     @model.get('sections').bind('add', @addSection, @)
     @model.bind('change', @render, @)
-    @model.get('sections').bind('change', @editSaved, @)
+    @model.get('sections').bind('change', @saveSectionEdit, @)
 
     @render()
     @addAllSections()
@@ -16,14 +16,13 @@ class Wiki.Views.Pages extends Backbone.View
 
     # modal
     $(document).ajaxComplete((event, res, settings) -> 
-
       unless res.status == 200
         $('#modal_content').css('color', 'red').text("Something went wrong: " + res.statusText)
       else
         $('#modal_content').css('color', 'green').text("Done!")
         setTimeout(
           -> $('#modal').modal('hide'),
-          250
+          500
         )
     )
 
@@ -48,7 +47,7 @@ class Wiki.Views.Pages extends Backbone.View
     $.each @model.get('sections').models , (i, section) -> self.addSection(section)
 
 
-  editSaved: -> 
+  saveSectionEdit: -> 
     $('#modal_content').css('color', 'black').text("Saving page...")
     $('#modal').modal()
     @model.save()
