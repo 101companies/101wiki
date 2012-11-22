@@ -10,6 +10,7 @@ class Wiki.Views.Pages extends Backbone.View
 
   el: "#page"
 
+
   render: ->
     # add page title
     $("#title h1").text(@model.get('title'))
@@ -25,7 +26,6 @@ class Wiki.Views.Pages extends Backbone.View
           500
         )
     )
-
     # add category links
     $.each @model.get('categories'), (i,catname) -> 
       $('#infofooter').prepend(
@@ -41,6 +41,7 @@ class Wiki.Views.Pages extends Backbone.View
   addSection: (section) ->
     sectionview = new Wiki.Views.Sections(model: section)
     sectionview.render()
+
 
   addAllSections: ->
     self = @
