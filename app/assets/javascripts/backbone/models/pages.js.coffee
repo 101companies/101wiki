@@ -6,9 +6,10 @@ class Wiki.Models.Implementation extends Backbone.Model
     title: ""
     categories: []
     sections: []
+    backlinks: []
 
-  model: 
+  model:
   	sections: Wiki.Models.Sections
-                      
-  urlRoot : -> 
+
+  urlRoot : ->
     "/api/pages"

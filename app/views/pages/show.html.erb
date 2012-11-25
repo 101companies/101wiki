@@ -5,9 +5,9 @@
           <li><a href="#">Home</a> <span class="divider">/</span></li>
           <li><a href="#">Wiki</a> <span class="divider">/</span></li>
           <li class="active">Implementations</li>
-        </ul> 
-    </div> 
-</div>  
+        </ul>
+    </div>
+</div>
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#wiki" data-toggle="tab">wiki</a></li>
@@ -19,27 +19,31 @@
 </div>
 
 <script type="text/javascript">
-
 Wiki.page = new Wiki.Models.Implementation({title: <%= j @context['title'].to_json.html_safe -%>});
 Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
 Wiki.page.set('categories',<%= j @context['categories'].to_json.html_safe -%>);
-//Wiki.page.set('categories', (<%= j @context['categories'].to_json.html_safe -%>))
-console.log(Wiki.page.get('sections').toJSON());
+Wiki.page.set('backlinks',<%= j @context['backlinks'].to_json.html_safe -%>);
 jQuery(document).ready(function ($){
   window.router = new Wiki.Routers.PagesRouter();
-  Backbone.history.start();	
+  Backbone.history.start();
 })
 
 </script>
 
 <div>
+    <div id="backlinks">
+      <h4>Citations:</h4>
+    </div>
+    <div id="categories">
+      <h4>Categories:</h4>
+    </div>
     <p id="infofooter">
-    	| <i class="icon-user"></i> <a href="#">Admin</a> 
+    	| <i class="icon-user"></i> <a href="#">Admin</a>
     	| <i class="icon-calendar"></i> Sept 16th, 2012 at 4:20 pm
       | <i class="icon-comment"></i> <a href="#">3 Comments</a>
       | <i class="icon-share"></i> <a href="#">39 Shares</a>
   </p>
-</div>	
+</div>
 <div class="modal fade" id="modal">
   <div class="modal-header">
     <a class="close" data-dismiss="modal">&times;</a>

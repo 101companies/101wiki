@@ -12,11 +12,12 @@ class Wiki.Views.Pages extends Backbone.View
 
 
   render: ->
+    console.log(@model.get('backlinks'))
     # add page title
     $("#title h1").text(@model.get('title'))
 
     # modal
-    $(document).ajaxComplete((event, res, settings) -> 
+    $(document).ajaxComplete((event, res, settings) ->
       unless res.status == 200
         $('#modal_content').css('color', 'red').text("Something went wrong: " + res.statusText)
       else
@@ -26,16 +27,26 @@ class Wiki.Views.Pages extends Backbone.View
           500
         )
     )
-    # add category links
-    $.each @model.get('categories'), (i,catname) -> 
-      $('#infofooter').prepend(
-        $('<a>').attr('href', 'Category:' + catname.replace(' ', '_')).html(
-          $('<span>').addClass('label label-info').text(catname)
+
+    # add backlinks
+    $.each @model.get('backlinks'), (i,name) ->
+      $('#backlinks').append(
+        $('<a>').attr('href',  "/" + name.replace(' ', '_')).html(
+          $('<p>').html($('<span>').addClass('label').text(name))
         ).append(' ')
       )
 
+    # add category links
+    $.each @model.get('categories'), (i,catname) ->
+      $('#categories').append(
+        $('<a>').attr('href', '/Category:' + catname.replace(' ', '_')).html(
+           $('<p>').html($('<span>').addClass('label').text(catname))
+        ).append(' ')
+      )
+
+
     # remove TOC
-    $('#toc').remove()  
+    $('#toc').remove()
 
 
   addSection: (section) ->
@@ -48,7 +59,7 @@ class Wiki.Views.Pages extends Backbone.View
     $.each @model.get('sections').models , (i, section) -> self.addSection(section)
 
 
-  saveSectionEdit: -> 
+  saveSectionEdit: ->
     $('#modal_content').css('color', 'black').text("Saving page...")
     $('#modal').modal()
     @model.save()

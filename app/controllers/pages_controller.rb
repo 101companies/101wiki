@@ -5,9 +5,9 @@ class PagesController < ApplicationController
   def show
     @title = params[:title]
     @page = Page.new(@title)
-    @context = {'title' => @page.title, 'categories' => @page.categories, 'sections' => @page.sections}
+    @context = {'title' => @page.title, 'categories' => @page.categories, 'sections' => @page.sections, 'backlinks' => @page.backlinks}
     respond_with @context
-  end	
+  end
 
   # get all sections for a page
   def sections
@@ -32,5 +32,5 @@ class PagesController < ApplicationController
     p = Page.new(title)
     section = {'content' => p.section(params[:title])}
     respond_with section.to_json
-  end	
-end	
+  end
+end

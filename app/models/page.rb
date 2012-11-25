@@ -46,14 +46,19 @@ class Page
 
   def categories
     @wiki.categories
-  end  
+  end
+
+  def backlinks
+    gw = MediaWiki::Gateway.new(@base_uri)
+    gw.backlinks(@title)
+  end
 
   def section(section)
-    @wiki.sections.first.children.find { |s| s.title.downcase == section.downcase } 
-  end  
+    @wiki.sections.first.children.find { |s| s.title.downcase == section.downcase }
+  end
 
   private
     def gateway
       return MediaWiki::Gateway.new(@base_uri)
    end
-end	
+end

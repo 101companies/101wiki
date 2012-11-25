@@ -8,7 +8,7 @@ Wiki::Application.routes.draw do
   root :to => "home#index"
   get '/data' => 'home#data'
   match '/:title' => 'pages#show'
- 
+
   #users
   match 'registrations' => 'users#index', :as => 'registrations'
   devise_for :users, :controllers => { :registrations => 'registrations' }
@@ -21,8 +21,8 @@ Wiki::Application.routes.draw do
         put "/" => "pages#update"
         get 'sections' => 'pages#sections'
         get 'sections/:title' => 'pages#section'
-      end  
-    end  
+      end
+    end
   end
 
   devise_for :users, :controllers => { :registrations => 'registrations' }
