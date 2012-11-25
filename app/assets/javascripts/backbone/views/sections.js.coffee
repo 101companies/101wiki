@@ -2,7 +2,6 @@ Wiki.Views.Sections ||= {}
 
 class Wiki.Views.Sections extends Backbone.View
   template : JST['backbone/templates/section']
-  ebTemplate: JST['backbone/templates/editbutton'] 
 
   render: ->
     self = @
@@ -19,7 +18,7 @@ class Wiki.Views.Sections extends Backbone.View
         else
           break
 
-    # replace prerendered section by template      
+    # replace prerendered section by template
     $section = $(@template(title: @model.get('title')))
     $section.find('.section-content-parsed').append($set)
     preRendered.after($section).remove()
@@ -30,6 +29,7 @@ class Wiki.Views.Sections extends Backbone.View
 
   edit: (button) ->
     self = @
+    console.log(button)
     @toggleEdit(true)
     self.editor = ace.edit($(self.el).find('.editor')[0]);
     self.editor.setTheme("ace/theme/chrome");
@@ -37,7 +37,7 @@ class Wiki.Views.Sections extends Backbone.View
     self.editor.insert(self.model.get('content'))
     $(button).find('strong').text("Save")
     $(button).unbind('click').bind('click', -> self.save(button))
-    
+
   save: (button) ->
     @model.set('content', @editor.getValue())
 

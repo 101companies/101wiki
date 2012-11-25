@@ -19,9 +19,13 @@ class Wiki.Views.Pages extends Backbone.View
     # modal
     $(document).ajaxComplete((event, res, settings) ->
       unless res.status == 200
-        $('#modal_content').css('color', 'red').text("Something went wrong: " + res.statusText)
+        $('#modal_body').html(
+          $('<div>').addClass('alert alert-error')
+          .text("Something went wrong: " + res.statusText))
       else
-        $('#modal_content').css('color', 'green').text("Done!")
+        $('#modal_body').html(
+          $('<div>').addClass('alert alert-success')
+          .text('Done'))
         setTimeout(
           -> $('#modal').modal('hide'),
           500
@@ -60,7 +64,9 @@ class Wiki.Views.Pages extends Backbone.View
 
 
   saveSectionEdit: ->
-    $('#modal_content').css('color', 'black').text("Saving page...")
+    $('#modal_body').html(
+          $('<div>').addClass('alert alert-info')
+          .text("Saving page..."))
     $('#modal').modal()
     @model.save()
 
