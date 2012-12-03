@@ -1,4 +1,4 @@
-class Wiki.Models.Implementation extends Backbone.Model
+class Wiki.Models.Page extends Backbone.Model
 
   idAttribute: 'title'
 

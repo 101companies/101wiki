@@ -1,5 +1,3 @@
-Wiki.Views.Sections ||= {}
-
 class Wiki.Views.Sections extends Backbone.View
   template : JST['backbone/templates/section']
 

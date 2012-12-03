@@ -19,18 +19,25 @@
 </div>
 
 <script type="text/javascript">
-Wiki.page = new Wiki.Models.Page({title: <%= j @context['title'].to_json.html_safe -%>});
+Backbone.View.prototype._super = function(funcName){
+    return this.constructor.__super__[funcName].apply(this, _.rest(arguments));
+}
+Wiki.page = new Wiki.Models.Category({title: <%= j @context['title'].to_json.html_safe -%>});
 Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
 Wiki.page.set('categories',<%= j @context['categories'].to_json.html_safe -%>);
 Wiki.page.set('backlinks',<%= j @context['backlinks'].to_json.html_safe -%>);
+Wiki.page.set('members',<%= j @context['members'].to_json.html_safe -%>);
 jQuery(document).ready(function ($){
-  window.router = new Wiki.Routers.PagesRouter(Wiki.Views.Pages);
+  window.router = new Wiki.Routers.PagesRouter(Wiki.Views.Categories);
   Backbone.history.start();
 })
 
 </script>
 
 <div>
+    <div id="members">
+      <h4>Members:</h4>
+    </div>
     <div id="categories">
       <h4>Categories:</h4>
     </div>
