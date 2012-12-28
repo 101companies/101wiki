@@ -18,17 +18,7 @@
     <%= parse(@page) -%>
 </div>
 
-<script type="text/javascript">
-Wiki.page = new Wiki.Models.Page({title: <%= j @context['title'].to_json.html_safe -%>});
-Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
-Wiki.page.set('categories',<%= j @context['categories'].to_json.html_safe -%>);
-Wiki.page.set('backlinks',<%= j @context['backlinks'].to_json.html_safe -%>);
-jQuery(document).ready(function ($){
-  window.router = new Wiki.Routers.PagesRouter(Wiki.Views.Pages);
-  Backbone.history.start();
-})
-
-</script>
+<%= render "/pages/shared/default" %>
 
 <div>
     <div id="categories">

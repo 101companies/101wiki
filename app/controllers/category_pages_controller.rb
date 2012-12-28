@@ -3,9 +3,7 @@ class CategoryPagesController < ApplicationController
 
   def show
     @title = params[:title]
-    @page = CategoryPage.new(@title)
-    @context = {'title' => @page.title, 'categories' => @page.categories, 'sections' => @page.sections, 'backlinks' => @page.backlinks, 'members' => @page.members}
-    respond_with @context
+    @page = CategoryPage.new(@title)    	  
+    respond_with @page
   end
-
 end

@@ -18,21 +18,7 @@
     <%= parse(@page) -%>
 </div>
 
-<script type="text/javascript">
-Backbone.View.prototype._super = function(funcName){
-    return this.constructor.__super__[funcName].apply(this, _.rest(arguments));
-}
-Wiki.page = new Wiki.Models.Category({title: <%= j @context['title'].to_json.html_safe -%>});
-Wiki.page.set('sections',new Wiki.Models.Sections(<%= j @context['sections'].to_json.html_safe -%>));
-Wiki.page.set('categories',<%= j @context['categories'].to_json.html_safe -%>);
-Wiki.page.set('backlinks',<%= j @context['backlinks'].to_json.html_safe -%>);
-Wiki.page.set('members',<%= j @context['members'].to_json.html_safe -%>);
-jQuery(document).ready(function ($){
-  window.router = new Wiki.Routers.PagesRouter(Wiki.Views.Categories);
-  Backbone.history.start();
-})
-
-</script>
+<%= render "pages/category" %>
 
 <div>
     <div id="members">
