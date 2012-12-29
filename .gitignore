@@ -76,3 +76,6 @@ pickle-email-*.html
 **.swp
 WFE/log
 WFE/tmp
+blueprints.log
+*.class
+SemanticEndpoint/out
