@@ -79,3 +79,5 @@ WFE/tmp
 blueprints.log
 *.class
 SemanticEndpoint/out
+.tags
+.tags_sorted_by_file
