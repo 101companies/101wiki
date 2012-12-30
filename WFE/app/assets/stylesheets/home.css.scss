@@ -273,3 +273,29 @@ p {
 #categories {
 	margin-bottom: 20px;
 }
+
+.label {
+	background-color: #555;
+	font-weight: 500;
+}
+.tripel {
+	color: gray;
+ 	text-align: left;
+ 	margin-bottom: 100px;
+}
+
+.subject, .predicate, .object, .arrow {
+	margin-left: 4px;
+	margin-right: 4px;
+	float: left;
+}
+
+.arrow {
+	font-size: 12px;
+}
+.predicate {
+	font-style: italic;
+	font-weight: bold;
+	color: #333;
+	background-color: white;
+}

@@ -7,6 +7,7 @@ class Wiki.Models.Page extends Backbone.Model
     categories: []
     sections: []
     backlinks: []
+    triples: []
 
   model:
   	sections: Wiki.Models.Sections

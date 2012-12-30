@@ -21,6 +21,10 @@ class Wiki.Views.Sections extends Backbone.View
     $section.find('.section-content-parsed').append($set)
     preRendered.after($section).remove()
     @setElement($section)
+    # hide metadata section
+    if @model.get('title') == "Metadata"
+      $(@el).find('.section-content-parsed').html("")
+      $(@el).attr('id','metasection')
 
     # set handler
     $(@el).find('.editbutton').click( -> self.edit(@))

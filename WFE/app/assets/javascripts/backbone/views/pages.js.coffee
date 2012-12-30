@@ -9,9 +9,17 @@ class Wiki.Views.Pages extends Backbone.View
 
     @render()
     @addAllSections()
+    self = @
+    @model.get('triples').fetch({
+      url: self.model.get('triples').urlBase + self.model.get('title').replace(":", "-3A")
+      dataType:     'jsonp'
+      jsonpCallback: 'callback'
+      success: (data,res,o) ->
+          self.addAllTriples()
+    })
 
   render: ->
-    console.log(@model.get('backlinks'))
+
     # add page title
     $("#title h1").text(@model.get('title'))
 
@@ -43,28 +51,26 @@ class Wiki.Views.Pages extends Backbone.View
      # (new Wiki.Views.ListItems(model: listitem)).render()
     #$('#backlinks').append(backlinks)
 
-    # add category links
-    $.each @model.get('categories'), (i,catname) ->
-      $('#categories').append(
-        $('<a>').attr('href', '/Category:' + catname.replace(' ', '_')).html(
-           $('<p>').html($('<span>').addClass('label').text(catname))
-        ).append(' ')
-      )
-
-
     # remove TOC
     $('#toc').remove()
-
 
   addSection: (section) ->
     sectionview = new Wiki.Views.Sections(model: section)
     sectionview.render()
 
-
   addAllSections: ->
     self = @
-    $.each @model.get('sections').models , (i, section) -> self.addSection(section)
+    $.each @model.get('sections').models , (i, section) ->
+      self.addSection(section)
 
+  addTriple: (triple) ->
+    tripleview = new Wiki.Views.Triples(model: triple)
+    tripleview.render()
+
+  addAllTriples: ->
+    self = @
+    $.each @model.get('triples').models , (i, triple) ->
+      self.addTriple(triple)
 
   saveSectionEdit: ->
     $('#modal_body').html(
