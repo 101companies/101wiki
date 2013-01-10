@@ -58,11 +58,12 @@ public class SemanticEndpoint extends HttpServlet {
 
     private void handle(String method, String resource, HttpServletResponse response) throws IOException {
         PrintWriter writer = response.getWriter();
+        response.addHeader("Access-Control-Allow-Origin","*");
         if(method.equalsIgnoreCase("getResourceTriples"))   {
             if(!resource.isEmpty()) {
                 String res = Explorer.getResourceTriples(resource);
                 response.setContentType("application/json");
-                writer.write(res);
+                writer.write("callback("+res+")");
                 writer.close();
             }
         }
