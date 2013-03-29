@@ -16,6 +16,7 @@ class Wrapper {
 
     private static final String repoURI = 'http://sl-mac.uni-koblenz.de:8081/openrdf-sesame/repositories/wiki101/';
     private static final String resourceBase = 'http://101companies.org/resource/';
+    private static final List<String> externalBases = ['http://en.wikipedia.org/wiki/', 'http://www.haskell.org/haskellwiki/']
 
     static Repository repo;
     static SailGraph graph;
@@ -28,7 +29,7 @@ class Wrapper {
     }
 
     public static boolean isPageRes(v) {
-        return v.toString().startsWith(resourceBase);
+        return (v.toString().startsWith(resourceBase) || externalBases.any {r -> v.toString().startsWith(r)});
     }
 
     public static SailVertex getVertex(pageName) {

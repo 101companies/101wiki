@@ -25,6 +25,12 @@ public class WrapperTest {
     }
 
     @Test
+    public void testIsResPageExternal() {
+        boolean t3 = Wrapper.isPageRes("http://www.haskell.org/haskellwiki/Monad");
+        assertTrue("Valid external resource", t3);
+    }
+
+    @Test
     public void testGetVertex() {
         int in = 0;
         Iterator<Vertex> it = Wrapper.getVertex("Base")
