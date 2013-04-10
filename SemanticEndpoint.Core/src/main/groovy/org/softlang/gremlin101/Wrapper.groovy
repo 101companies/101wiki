@@ -14,7 +14,7 @@ import edu.uci.ics.jung.algorithms.scoring.EdgeScorer;
 
 class Wrapper {
 
-    private static final String repoURI = 'http://sl-mac.uni-koblenz.de:8081/openrdf-sesame/repositories/wiki101/';
+    private static final String repoURI = 'http://triples.101companies.org/openrdf-sesame/repositories/wiki101/';
     private static final String resourceBase = 'http://101companies.org/resource/';
     private static final List<String> externalBases = ['http://en.wikipedia.org/wiki/', 'http://en.wikibooks.org/wiki/', 'http://www.haskell.org/haskellwiki/']
 
