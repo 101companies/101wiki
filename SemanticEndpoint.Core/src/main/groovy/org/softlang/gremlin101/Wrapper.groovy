@@ -20,7 +20,6 @@ class Wrapper {
     private static final String resourceBase = base + 'resource/';
     private static final String propertyBase = base + 'property/';
 
-
     static Repository repo;
     static SailGraph graph;
 
