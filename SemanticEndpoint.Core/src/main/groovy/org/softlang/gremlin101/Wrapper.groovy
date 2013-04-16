@@ -1,6 +1,7 @@
 package org.softlang.gremlin101
 
 import net.fortytwo.sesametools.reposail.RepositorySail;
+import org.openrdf.rio.ntriples.NTriplesUtil;
 
 import org.openrdf.repository.Repository;
 import org.openrdf.repository.http.HTTPRepository;
@@ -14,9 +15,11 @@ import edu.uci.ics.jung.algorithms.scoring.EdgeScorer;
 
 class Wrapper {
 
-    private static final String repoURI = 'http://sl-mac.uni-koblenz.de:8081/openrdf-sesame/repositories/wiki101/';
-    private static final String resourceBase = 'http://101companies.org/resource/';
-    private static final List<String> externalBases = ['http://en.wikipedia.org/wiki/', 'http://en.wikibooks.org/wiki/', 'http://www.haskell.org/haskellwiki/']
+    private static final String repoURI = 'http://triples.101companies.org/openrdf-sesame/repositories/wiki101/';
+    private static final String base = 'http://101companies.org/';
+    private static final String resourceBase = base + 'resource/';
+    private static final String propertyBase = base + 'property/';
+
 
     static Repository repo;
     static SailGraph graph;
@@ -28,8 +31,8 @@ class Wrapper {
         graph = new LinkedDataSailGraph(new SailGraph(new RepositorySail(repo)));
     }
 
-    public static boolean isPageRes(v) {
-        return (v.toString().startsWith(resourceBase) || externalBases.any {r -> v.toString().startsWith(r)});
+    public static boolean is101Property(v) {
+        return v.startsWith(propertyBase)
     }
 
     public static SailVertex getVertex(pageName) {
@@ -37,11 +40,11 @@ class Wrapper {
     }
 
     public static List<SailEdge> exploreIn(pageName) {
-        return getVertex(pageName).inE.filter { isPageRes(it.getVertex(Direction.IN).getId())}.toList()
+        return getVertex(pageName).inE.filter { is101Property(it.getLabel())}.toList()
     }
 
     public static List<SailEdge> exploreOut(pageName) {
-        return getVertex(pageName).outE.filter { isPageRes(it.getVertex(Direction.IN).getId())}.toList()
+        return getVertex(pageName).outE.filter { is101Property(it.getLabel())}.toList()
     }
 
 }
